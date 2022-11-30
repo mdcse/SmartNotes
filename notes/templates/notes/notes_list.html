@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="my-5">List of Notes:</h1>
+
+<div class="row row-cols-3 g-2">
+    {% for note in notes %}
+    <div class="col">
+        <div class="p-3 border">
+
+            <h1 class="note-li list-group-item"> <a class="text-decoration-none link-dark"
+                    href="{% url 'notes.detail' pk=note.id %}">{{ note.title }}</a></h1>
+                    {{note.content|truncatechars:10}}
+                    <br>
+                    <small class="text-right">{{note.date}}</small>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

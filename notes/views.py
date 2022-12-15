@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404 #for page not found
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
 
 # Create your views here.
@@ -26,6 +26,15 @@ class NotesListViews(ListView):
 # def list(request):
 #     mynotes = Note.objects.all()
 #     return render(request, 'notes/notes_list.html', {'notes': mynotes})
+
+class NotesUpdateViews(UpdateView):
+    model = Notes
+    form_class = NotesForm
+    success_url = '/smart/notes'
+
+class NotesDeleteViews(DeleteView):
+    model = Notes
+    success_url = '/smart/notes'
 
 class NotesDetailViews(DetailView):
     model = Notes
